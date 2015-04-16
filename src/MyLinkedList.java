@@ -73,7 +73,7 @@ public class MyLinkedList {
 	
 	public Object get(int index){
 		if (index < 0 || index > this.size-1) {
-			return false;
+			return null;
 		}
 		Node current = this.head;
 		for (int i=0; i<index;i++){
