@@ -14,12 +14,14 @@ public class MyLinkedList {
 	
 	public String toString(){
 		String s = "";
-		Node temp = head;
-		while(temp.getNext() != null){
-			s += temp.getData() + " > ";
-			temp = temp.getNext();
+		if (this.head != null){
+			Node temp = head;
+			while(temp.getNext() != null){
+				s += temp.getData() + " > ";
+				temp = temp.getNext();
+			}
+			s += temp.getData();
 		}
-		s += temp.getData();
 		return s;
 	}
 	
@@ -40,13 +42,26 @@ public class MyLinkedList {
 	}
 	
 	public boolean add(Object value, int index){
-		if (index < 0 || index > size-1){
+		
+		if(this.size == 0){
+			this.add(value);
+			return true;	
+		}		
+		else if (index < 0 || index > size-1){
 			return false;			
+		}
+		else if (index == 0){
+			Node tempHead = new Node(value);
+			tempHead.setNext(this.head);
+			this.head = tempHead;
+			this.size++;
+			return true;
 		}
 		else{
 			Node current = this.head;
-			for (int i=0; i < index; i++){
-				current = current.getNext();				
+			int i = 0;
+			while (i < index){
+				current = current.getNext();
 			}
 			Node nNode = new Node(value);
 			nNode.setNext(current.getNext());
@@ -67,16 +82,48 @@ public class MyLinkedList {
 		return current.getData();
 	}
 	
+	public boolean remove(int index){
+		if (index < 0 || index > this.size-1) {
+			return false;
+		}
+		else if(index == 0){
+			Node current = this.head;
+			Node temp = current.getNext();
+			this.head = temp;
+			this.size--;
+			return true;
+		}
+		Node current = this.head;
+		for (int i=1; i<index;i++){
+			current = current.getNext();
+		}
+		Node temp = current.getNext().getNext();
+		current.setNext(temp);
+		this.size--;
+		return true;
+	}
+	
+	public boolean set(Object value, int index){
+		if (index < 0 || index > this.size-1) {
+			return false;
+		}
+		Node current = this.head;
+		for (int i=0; i<index;i++){
+			current = current.getNext();
+		}
+		current.setData(value);
+		return true;
+	}
+	
 	public static void main (String[] args){
 		MyLinkedList mll = new MyLinkedList();
-		System.out.println(mll.getSize());
-		mll.add(1);
-		mll.add(1);
-		mll.add(2, 1);
-		mll.add(1);
-		System.out.println(mll.getSize());
 		System.out.println(mll);
-		System.out.println(mll.get(2));
+		System.out.println(mll.add(0,0));
+		System.out.println(mll);
+		System.out.println(mll.add(2,0));
+		System.out.println(mll);		
+		System.out.println(mll.remove(0));
+		System.out.println(mll);	
 	}
 	
 	private class Node{
