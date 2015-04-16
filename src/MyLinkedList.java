@@ -115,15 +115,37 @@ public class MyLinkedList {
 		return true;
 	}
 	
+	public Object mid(){
+		if(this.size == 0){
+			return null;
+		}
+		else{
+			Node oneStep = this.head;
+			Node twoStep = this.head;
+			int i = 0;
+			while(oneStep.getNext() != null){
+				oneStep = oneStep.getNext();
+				i++;
+				if(i % 2 == 0){
+					twoStep = twoStep.getNext();
+				}
+			}
+			return twoStep.getData();
+		}
+	}
+	
 	public static void main (String[] args){
 		MyLinkedList mll = new MyLinkedList();
-		System.out.println(mll);
-		System.out.println(mll.add(0,0));
-		System.out.println(mll);
-		System.out.println(mll.add(2,0));
-		System.out.println(mll);		
-		System.out.println(mll.remove(0));
-		System.out.println(mll);	
+		mll.add(1);
+		System.out.println(mll.mid());
+		mll.add(2);
+		System.out.println(mll.mid());
+		mll.add(3);
+		System.out.println(mll.mid());
+		mll.add(4);
+		System.out.println(mll.mid());
+		mll.add(5);
+		System.out.println(mll.mid());
 	}
 	
 	private class Node{
