@@ -1,4 +1,5 @@
 import java.util.Arrays;
+import java.util.Set;
 
 
 
@@ -141,13 +142,8 @@ public class MyLinkedList {
 	
 	
 	public static void main (String[] args){
-		String s = "hello world";
-		String ri = ArraynString.reverseBuffer(s);
-		System.out.println(ri);
-		System.out.println(ArraynString.reverseRecursive(s));
-		int[] u = {5,3,2,1};
-		ArraynString.pass(u);
-		System.out.println(Arrays.toString(u));
+		System.out.println(ArraynString.reverseInt(1020));
+		System.out.println(ArraynString.reverseInt(21112));
 	}
 	
 	private class Node{
