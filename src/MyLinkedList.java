@@ -1,3 +1,7 @@
+import java.util.Arrays;
+
+
+
 
 public class MyLinkedList {
 	
@@ -115,7 +119,7 @@ public class MyLinkedList {
 		return true;
 	}
 	
-	public Object mid(){
+	public Object mid(){		
 		if(this.size == 0){
 			return null;
 		}
@@ -134,18 +138,16 @@ public class MyLinkedList {
 		}
 	}
 	
+	
+	
 	public static void main (String[] args){
-		MyLinkedList mll = new MyLinkedList();
-		mll.add(1);
-		System.out.println(mll.mid());
-		mll.add(2);
-		System.out.println(mll.mid());
-		mll.add(3);
-		System.out.println(mll.mid());
-		mll.add(4);
-		System.out.println(mll.mid());
-		mll.add(5);
-		System.out.println(mll.mid());
+		String s = "hello world";
+		String ri = ArraynString.reverseBuffer(s);
+		System.out.println(ri);
+		System.out.println(ArraynString.reverseRecursive(s));
+		int[] u = {5,3,2,1};
+		ArraynString.pass(u);
+		System.out.println(Arrays.toString(u));
 	}
 	
 	private class Node{
