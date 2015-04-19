@@ -37,8 +37,7 @@ public class ArraynString {
 					a[j] = a[j-1] - a[j];
 					a[j-1] = a[j-1] - a[j];
 				}
-			}
-			System.out.println(Arrays.toString(a));
+			}			
 		}
 	}
 	
@@ -62,8 +61,7 @@ public class ArraynString {
 	
 	public static int fibonacciRecursive(int n){
 		if(n <= 2){
-			return 1;
-			
+			return 1;			
 		}
 		else{
 			return fibonacciRecursive(--n) + fibonacciRecursive(--n);

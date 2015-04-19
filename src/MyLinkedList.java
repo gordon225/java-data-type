@@ -139,11 +139,32 @@ public class MyLinkedList {
 		}
 	}
 	
-	
+	public void reverseIterative(){
+		if (this.size < 2){
+			return;
+		}
+		Node current = this.head;
+		while (current.next != null){
+			Node next = current.getNext();
+			Node temp = next.getNext();
+			current.setNext(temp);
+			next.setNext(this.head);
+			this.head = next;			
+		}
+		System.out.println(this);
+	}
 	
 	public static void main (String[] args){
-		System.out.println(ArraynString.reverseInt(1020));
-		System.out.println(ArraynString.reverseInt(21112));
+		MyLinkedList mll = new MyLinkedList();
+		mll.reverseIterative();
+		mll.add(1);
+		mll.reverseIterative();
+		mll.add(2);
+		//mll.add(3);
+		//mll.add(4);
+		//mll.add(5);
+		mll.reverseIterative();
+		//System.out.println(mll.get(0));
 	}
 	
 	private class Node{
