@@ -45,6 +45,28 @@ public class BinarySearchTree {
 		
 	}
 	
+	public int max(){
+		if (this.root == null){
+			throw new IllegalArgumentException("Calling max() on empty tree");
+		}
+		Node current = this.root;
+		while(current.right != null){
+			current = current.right;
+		}
+		return current.getValue();
+	}
+	
+	public int min(){
+		if (this.root == null){
+			throw new IllegalArgumentException("Calling min() on empty tree");
+		}
+		Node current = this.root;
+		while(current.left != null){
+			current = current.left;
+		}
+		return current.getValue();		
+	}
+	
 	public void print(){
 		if (this.root == null){
 			System.out.println("");
