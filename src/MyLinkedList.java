@@ -154,17 +154,28 @@ public class MyLinkedList {
 		System.out.println(this);
 	}
 	
+	public void reverseRecursive(Node n){
+		if (n == null){
+			return;
+		}		
+		if (n.getNext() == null){
+			this.head = n;
+			return;
+		}
+		reverseRecursive(n.getNext());
+		n.getNext().setNext(n);
+		n.setNext(null);
+	}
+	
 	public static void main (String[] args){
-		MyLinkedList mll = new MyLinkedList();
-		mll.reverseIterative();
-		mll.add(1);
-		mll.reverseIterative();
-		mll.add(2);
-		//mll.add(3);
-		//mll.add(4);
-		//mll.add(5);
-		mll.reverseIterative();
-		//System.out.println(mll.get(0));
+		BinarySearchTree bst = new BinarySearchTree();
+		bst.root = bst.insert(bst.root, 2);
+		bst.root = bst.insert(bst.root, 1);		
+		bst.root = bst.insert(bst.root, 3);
+		bst.root = bst.insert(bst.root, 4);
+		bst.root = bst.insert(bst.root, 5);
+		bst.print();
+		System.out.println(bst.search(bst.root, 3));
 	}
 	
 	private class Node{
