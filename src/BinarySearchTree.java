@@ -11,7 +11,7 @@ public class BinarySearchTree {
 		super();
 	}
 	
-	public Node insert(Node n, int value){
+	public Node insert(Node n, int value) throws IllegalArgumentException{
 		
 		if(n == null){
 			return new Node(value);
