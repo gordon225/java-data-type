@@ -45,6 +45,48 @@ public class BinarySearchTree {
 		
 	}
 	
+	public void delete(int value){		
+		this.root = delete(this.root, value);
+	}
+	
+	private Node delete(Node n, int v){
+		if (n == null){
+			return null;
+		}
+		
+		if (n.getValue() == v){
+			if (n.right == null && n.left == null){
+				return null;
+			}
+			else if (n.left == null){
+				return n.right;
+			}
+			else if (n.right == null){
+				return n.left;
+			}
+			else{
+				Node temp = n.left;
+				while(temp.right != null){
+					temp = temp.right;
+				}
+				n.data = temp.data;
+				n.setLeft(delete(n.left, temp.getValue()));
+				return n;
+			}
+		}
+		else if(n.getValue() < v){
+			
+			n.setRight(delete(n.right, v));
+			return n;
+		}
+		else{
+			
+			n.setLeft(delete(n.left, v));
+			return n;
+		}
+		
+	}
+	
 	public int max(){
 		if (this.root == null){
 			throw new IllegalArgumentException("Calling max() on empty tree");
@@ -65,6 +107,10 @@ public class BinarySearchTree {
 			current = current.left;
 		}
 		return current.getValue();		
+	}
+	
+	public int getRoot(){
+		return this.root.getValue();
 	}
 	
 	public void print(){
